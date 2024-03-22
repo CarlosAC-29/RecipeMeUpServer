@@ -1,4 +1,6 @@
-
+const { config } = require('dotenv');
+config();
+console.log(process.env.HOLA);
 //geminiConfig is the configuration object for the gemini-1.0-pro model
 const geminiConfig = {
     MODEL_NAME : "gemini-1.0-pro",
@@ -6,13 +8,10 @@ const geminiConfig = {
 }
 
 //dialogflowConfig is the configuration object for the dialogflow CX
-const fs = require('fs');
-const CREDENTIALS = JSON.parse(fs.readFileSync('./enviroment/credentials.json'));
-
 const dialogflowConfig = {
     credentials: {
-        private_key: CREDENTIALS.private_key,
-        client_email: CREDENTIALS.client_email
+        private_key: process.env.DIALOGFLOW_PRIVATE_KEY,
+        client_email: process.env.DIALOGFLOW_CLIENT_EMAIL
     }
 }
 
